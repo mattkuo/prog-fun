@@ -16,7 +16,6 @@ project/plugins/project/
 ### Eclipse Stuff ###
 .metadata
 build
-.classpath
 org.scala-ide.std.core/META-INF/MANIFEST.MF
 org.scala-ide.sdt.update-site/site.xml
 
