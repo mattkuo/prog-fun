@@ -33,12 +33,17 @@ object Main {
       else balanceHelper(chars.tail, num)
     }
     
-    return balanceHelper(chars, 0)
+    balanceHelper(chars, 0)
   }
 
   /**
    * Exercise 3
    */
-  def countChange(money: Int, coins: List[Int]): Int = ???
+  def countChange(money: Int, coins: List[Int]): Int = {
+    if(money == 0) 1
+    else if (money > 0 && !coins.isEmpty)
+      countChange(money - coins.head, coins) + countChange(money, coins.tail)
+    else 0
+  }
   
 }

@@ -11,6 +11,8 @@ target/
 src_managed/
 project/boot/
 project/plugins/project/
+.cache-main
+.cache-tests
 
 ### Eclipse Stuff ###
 .metadata
