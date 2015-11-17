@@ -12,13 +12,14 @@ src_managed/
 project/boot/
 project/plugins/project/
 .cache-main
-.classpath
 .cache-tests
 lib_managed
 
 ### Eclipse Stuff ###
 .metadata
 build
+.settings
+.classpath
 org.scala-ide.std.core/META-INF/MANIFEST.MF
 org.scala-ide.sdt.update-site/site.xml
 
