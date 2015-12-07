@@ -23,9 +23,15 @@ object Huffman {
   case class Leaf(char: Char, weight: Int) extends CodeTree
 
   // Part 1: Basics
-  def weight(tree: CodeTree): Int = ??? // tree match ...
+  def weight(tree: CodeTree): Int = tree match {
+    case Fork(_, _, _, weight) => weight
+    case Leaf(_, weight) => weight
+  }
 
-  def chars(tree: CodeTree): List[Char] = ??? // tree match ...
+  def chars(tree: CodeTree): List[Char] = tree match {
+    case Fork(_, _, chars, _) => chars
+    case Leaf(char, _) => List(char)
+  }
 
   def makeCodeTree(left: CodeTree, right: CodeTree) =
     Fork(left, right, chars(left) ::: chars(right), weight(left) + weight(right))
@@ -42,7 +48,7 @@ object Huffman {
    * This function computes for each unique character in the list `chars` the number of
    * times it occurs. For example, the invocation
    *
-   *   times(List('a', 'b', 'a'))
+   *   times(List('a', 'b', 'a')
    *
    * should return the following (the order of the resulting list is not important):
    *
@@ -66,7 +72,19 @@ object Huffman {
    *       println("integer is  : "+ theInt)
    *   }
    */
-  def times(chars: List[Char]): List[(Char, Int)] = ???
+  def times(chars: List[Char]): List[(Char, Int)] = {
+
+    def acquireValue(x: Option[Int]) = x match {
+      case Some(s) => s + 1
+      case None => 1
+    }
+    
+    val createMapping = chars.foldLeft(Map[Char, Int]())((soFar, currentChar) => {
+      soFar + (currentChar -> acquireValue(soFar.get(currentChar)) )
+    })
+    
+    createMapping.toList
+  }
 
   /**
    * Returns a list of `Leaf` nodes for a given frequency table `freqs`.
